@@ -1,0 +1,45 @@
+<?php
+$abre = $confs[0][0];
+$fecha = $confs[0][1]
+?>
+<div class="container">
+<h2>Cheque a disponibilidade dos nossos atendentes:</h2>
+<table class="responsive-table">
+    <tr>
+        <th>
+            Horários
+        </th>
+        <?php foreach ($atendentes as $at) {
+            ?>
+            <th>
+            <?php echo $at['username']; ?>
+            </th>
+    <?php } ?>
+    </tr>
+    <?php
+    //pego o array do horario de funcionamento do estabelecimento itero ele para dar as horas que o estabelecimento vai 
+    //abrir todo dia
+    for ($i = explode(':', $abre)[0]; $i <= explode(':', $fecha)[0]; ++$i) {
+        ?>
+        <tr>
+            <td>
+            <?php echo $i ?>:00
+            </td>
+            <?php foreach ($atendentes as $at) {
+                ?>
+                <td>
+                    <?php
+                    if (in_array($i, explode(",", $at['DISPONIBILIDADE']))) {
+                        echo "<a href='" . BASE_URL . "agendamento/servicos?data=" . $dia . "&horario=" . $i . "&idatd=" . $at['id'] . "'>Disponível</a>";
+                    } else {
+                        echo "Indisponível";
+                    }
+                    ?>
+                </td>
+        <?php } ?>
+        </tr>
+        <?php
+    }
+    ?>
+</table>
+</div>

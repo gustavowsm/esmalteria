@@ -1,0 +1,47 @@
+<nav>
+    <div style="background-color:#f06292 " class="nav-wrapper ">
+        <div class="center-wrapper">
+            <a href="#" class="brand-logo">Anna's Smalteria</a>
+        </div>
+    </div>
+</nav>
+<br>
+
+<div class="container">
+    <div class="row">
+        <form class="col s12" method="POST" action="<?php echo BASE_URL ?>usuarios/add_usuario">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input name="nome" id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">Nome</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">phone</i>
+                    <input name="telefone" id="icon_telephone" type="tel" class="validate">
+                    <label for="icon_telephone">Telefone</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix ">email</i>
+                    <input name="email" id="icon_prefix" type="text" class="validate ">
+                    <label for="icon_prefix">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="switch">
+                    <label>
+                        Cliente
+                        <input type="checkbox" name="tipo">
+                        <span class="lever"></span>
+                        Atendente
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="waves-effect waves-light btn pink lighten-2">Cadastrar</button>
+        </form>
+    </div>
+</div>
+
+
