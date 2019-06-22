@@ -77,7 +77,17 @@ class Registros extends model {
     }
 
     public function getMeusServicos($id) {
-        
+        $sql = "SELECT * FROM atendimentos WHERE ID_ATENDENTE = :ID_ATENDENTE";
+        $sql = $this->db->prepare($sql);
+        $sql->bindValue(':ID_ATENDENTE', $id);
+        $sql->execute();
+
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetchAll();
+            return $array;
+        } else {
+            return false;
+        }
     }
 
 }

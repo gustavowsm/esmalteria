@@ -25,13 +25,20 @@ class configuracoesController extends controller {
     }
 
     public function altera() {
+        $c = new Confs();
         if (isset($_POST['abre']) && !empty($_POST['abre']) &&
                 isset($_POST['fecha']) && !empty($_POST['fecha']) &&
                 isset($_POST['dias']) && !empty($_POST['dias'])) {
-            echo $_POST['abre'];
+            echo $abre = $_POST['abre'];
             echo "<br>";
-            echo $_POST['fecha'];    echo "<br>";
-            echo implode(",",$_POST['dias']);
+            echo $fecha = $_POST['fecha'];
+            echo "<br>";
+            echo $dias = implode(",", $_POST['dias']);
+            if ($c->update($abre, $fecha, $dias) == true) {
+                header("Location:" . BASE_URL . "configuracoes/");
+            } else {
+                header("Location:" . BASE_URL);
+            }
         }
     }
 

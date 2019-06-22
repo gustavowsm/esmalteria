@@ -31,18 +31,39 @@ class usuariosController extends controller {
 
     public function true_edit() {
         $user = new Users();
-        if (isset($_POST['nome']) && !empty($_POST['nome']) &&
-                isset($_POST['telefone']) && !empty($_POST['telefone']) &&
-                isset($_POST['email']) && !empty($_POST['email'])) {
-            $nome = $_POST['nome'];
-            $telefone = $_POST['telefone'];
-            $email = $_POST['email'];
-            $id = $_POST['id'];
+        if ($_POST['atendente'] == 1 && $_POST['cliente'] == 0) {
+            if (isset($_POST['nome']) && !empty($_POST['nome']) &&
+                    isset($_POST['telefone']) && !empty($_POST['telefone']) &&
+                    isset($_POST['horarios']) && !empty($_POST['horarios']) &&
+                    isset($_POST['email']) && !empty($_POST['email'])) {
+                $nome = $_POST['nome'];
+                $telefone = $_POST['telefone'];
+                $email = $_POST['email'];
+                $id = $_POST['id'];
+                $horarios = implode(",", $_POST['horarios']);
 
-            if ($user->edit($nome, $email, $telefone, $id)) {
-                header("Location: " . BASE_URL . "usuarios/");
-            } else {
-                header("Location: " . BASE_URL . "usuarios/");
+                if ($user->editAtendente($nome, $email, $telefone, $id, $horarios)) {
+                    header("Location: " . BASE_URL . "usuarios/");
+                } else {
+                    header("Location: " . BASE_URL . "usuarios/");
+                }
+            }
+        }
+        if ($_POST['atendente'] == 0 && $_POST['cliente'] == 1) {
+            $user = new Users();
+            if (isset($_POST['nome']) && !empty($_POST['nome']) &&
+                    isset($_POST['telefone']) && !empty($_POST['telefone']) &&
+                    isset($_POST['email']) && !empty($_POST['email'])) {
+                $nome = $_POST['nome'];
+                $telefone = $_POST['telefone'];
+                $email = $_POST['email'];
+                $id = $_POST['id'];
+
+                if ($user->edit($nome, $email, $telefone, $id)) {
+                    header("Location: " . BASE_URL . "usuarios/");
+                } else {
+                    header("Location: " . BASE_URL . "usuarios/");
+                }
             }
         }
     }
@@ -130,8 +151,18 @@ class usuariosController extends controller {
             $this->loadTemplate('clienteServicos', $data);
         }
         if ($this->user->getTipo() == 1) {
+            $r = new Registros();
+            $s = new Servicos();
             $data['tipo'] = $this->user->getTipo();
             $data['name'] = $this->user->getName();
+            $data['atendimentos'] = $r->getMeusServicos($this->user->getUid());
+
+            foreach ($s->getIdServicos() as $a) {
+                $idservicos[] = $a['id'];
+                $nomes[] = $a['NOME'];
+            }
+            $data['servicos'] = $idservicos;
+            $data['nomes'] = $nomes;
             $this->loadTemplate('atendenteServicos', $data);
         }
     }

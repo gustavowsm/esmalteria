@@ -1,9 +1,9 @@
-<?php
-$abre = $confs[0][0];
-$fecha = $confs[0][1]
-?>
 <div class="container">
 <h2>Cheque a disponibilidade dos nossos atendentes:</h2>
+<?php
+ $abre = $confs[0];
+ $fecha = $confs[1];
+?>
 <table class="responsive-table">
     <tr>
         <th>

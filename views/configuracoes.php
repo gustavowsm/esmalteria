@@ -39,10 +39,10 @@
                                 }
                                 ?>/><span style="color: white;">Terça</span> </label></p>
                         <p><label><input name="dias[]" type="checkbox" value="qua"  <?php
-                                         if ($dias[2] == 'qua') {
-                                             echo "checked";
-                                         }
-                                         ?>/><span style="color: white;">Quarta</span> </label></p>
+                                if ($dias[2] == 'qua') {
+                                    echo "checked";
+                                }
+                                ?>/><span style="color: white;">Quarta</span> </label></p>
                         <p><label><input name="dias[]" type="checkbox" value="qui"  <?php
                                 if ($dias[3] == 'qui') {
                                     echo "checked";
@@ -63,6 +63,9 @@
                                     echo "checked";
                                 }
                                 ?>/><span style="color: white;">Domingo</span> </label></p>
+                    </div>
+                    <div class="input-field col s6">
+                        Feriados:
                     </div>
                 </div>
 

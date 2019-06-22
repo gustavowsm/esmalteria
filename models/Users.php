@@ -124,6 +124,18 @@ class Users extends Model {
         return true;
     }
 
+    public function editAtendente($nome, $email, $telefone, $id, $horarios) {
+        $sql = "UPDATE `users` SET `username` = :username, EMAIL = :EMAIL,telefone = :telefone,DISPONIBILIDADE = :DISPONIBILIDADE WHERE `users`.`id` = :id";
+        $sql = $this->db->prepare($sql);
+        $sql->bindValue(':username', $nome);
+        $sql->bindValue(':telefone', $telefone);
+        $sql->bindValue(':EMAIL', $email);
+        $sql->bindValue(':id', $id);
+        $sql->bindValue(':DISPONIBILIDADE', $horarios);
+        $sql->execute();
+        return true;
+    }
+
     public function delete($id) {
         $sql = "UPDATE users SET ativo = 0 WHERE id = :id";
         $sql = $this->db->prepare($sql);
