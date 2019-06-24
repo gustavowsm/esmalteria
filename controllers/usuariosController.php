@@ -79,9 +79,9 @@ class usuariosController extends controller {
             $id = $_POST['id'];
 
             if ($user->edit($nome, $email, $telefone, $id)) {
-                header("Location: " . BASE_URL . "minha_conta/");
+                header("Location: " . BASE_URL . "usuarios/minha_conta/");
             } else {
-                header("Location: " . BASE_URL . "minha_conta/");
+                header("Location: " . BASE_URL . "usuarios/minha_conta/");
             }
         }
     }

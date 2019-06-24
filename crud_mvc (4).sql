@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 21-Jun-2019 às 23:51
+-- Generation Time: 24-Jun-2019 às 04:06
 -- Versão do servidor: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -47,17 +47,21 @@ CREATE TABLE `atendimentos` (
 --
 
 INSERT INTO `atendimentos` (`ID`, `ID_ATENDENTE`, `ID_CLIENTE`, `ID_SERVICO`, `NOME_CLIENTE`, `VALOR_PAGO`, `TEMPOESTIMADO`, `METODO`, `DATACRI`, `DATAMOD`, `DATAMARCADA`) VALUES
-(1, 1, 1, '4,5', 'creuza solinalva ', '0', '00:00:00', '', '2019-06-15 12:50:35', '0000-00-00 00:00:00', '2019-06-18 15:00:00'),
-(2, 2, 1, '1', 'fulana', '15', '00:00:00', '', '2019-05-31 23:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 2, 1, '1', 'fulana', '15', '00:00:00', '', '2019-05-31 22:30:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 2, 1, '2', 'fulana', '2', '00:00:00', '', '2019-06-18 02:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, 1, 1, '2,4,5', 'creuza solinalva ', '0', '00:00:00', '', '2019-06-15 11:29:38', '0000-00-00 00:00:00', '2019-06-20 12:00:00'),
+(1, 1, 1, '4,5', 'creuza solinalva ', '60', '00:00:00', 'dinheiro', '2019-06-15 12:50:35', '0000-00-00 00:00:00', '2019-06-18 15:00:00'),
+(2, 2, 1, '4', 'fulana', '15', '01:30:00', 'dinheiro', '2019-05-31 23:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 2, 1, '1', 'fulana', '15', '00:00:00', 'dinheiro', '2019-05-31 22:30:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 2, 1, '2', 'fulana', '2', '00:00:00', 'dinheiro', '2019-06-18 02:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 1, 1, '2,4,5', 'creuza solinalva ', '60', '00:00:00', 'dinheiro', '2019-06-15 11:29:38', '0000-00-00 00:00:00', '2019-06-20 12:00:00'),
 (6, 10, 2, '2,4', 'admin', '40', '00:00:00', 'dinheiro', '2019-06-19 16:52:36', '0000-00-00 00:00:00', '2019-06-21 11:00:00'),
 (7, 10, 2, '2,4', 'admin', '40', '00:00:00', 'dinheiro', '2019-06-19 16:54:36', '0000-00-00 00:00:00', '2019-06-21 11:00:00'),
-(8, 10, 2, '2,4,5', 'fulana', '40', '00:00:00', 'dinheiro', '2019-06-19 17:39:42', '0000-00-00 00:00:00', '2019-06-28 15:00:00'),
+(8, 11, 2, '2', 'fulana', '40', '01:30:00', 'dinheiro', '2019-06-19 17:39:42', '0000-00-00 00:00:00', '2019-06-28 15:00:00'),
 (9, 10, 2, '4,5', 'fulana', '40', '00:00:00', 'dinheiro', '2019-06-19 17:42:35', '0000-00-00 00:00:00', '2019-06-24 16:00:00'),
 (10, 11, 2, '2,4', 'fulana', '40', '00:00:00', 'dinheiro', '2019-06-21 08:05:25', '0000-00-00 00:00:00', '2019-06-22 15:00:00'),
-(11, 1, 2, '2,4,5', 'fulana', '60', '04:30:00', 'dinheiro', '2019-06-21 08:21:42', '0000-00-00 00:00:00', '2019-06-26 12:00:00');
+(11, 1, 2, '2,4,5', 'fulana', '60', '04:30:00', 'dinheiro', '2019-06-21 08:21:42', '0000-00-00 00:00:00', '2019-06-26 15:00:00'),
+(12, 11, 2, '2', 'fulana', '40', '01:30:00', 'debito', '2019-06-22 20:13:14', '0000-00-00 00:00:00', '2019-06-28 17:00:00'),
+(13, 11, 2, '2', 'fulana', '20', '01:30:00', 'dinheiro', '2019-06-22 23:49:49', '0000-00-00 00:00:00', '2019-06-26 14:00:00'),
+(14, 11, 2, '4', 'fulana', '20', '01:00:00', 'credito', '2019-06-23 17:11:38', '0000-00-00 00:00:00', '2019-06-26 15:00:00'),
+(15, 11, 1, '2,4,5', 'admin', '60', '03:00:00', 'debito', '2019-06-23 20:16:26', '0000-00-00 00:00:00', '2019-06-26 16:00:00');
 
 -- --------------------------------------------------------
 
@@ -77,7 +81,7 @@ CREATE TABLE `confs` (
 --
 
 INSERT INTO `confs` (`id`, `ABRE`, `FECHA`, `DIAS`) VALUES
-(1, '09:00:00', '18:00:00', 'seg,ter,qua,qui,sex');
+(1, '08:00:00', '18:00:00', 'seg,ter,qua,qui,sex');
 
 -- --------------------------------------------------------
 
@@ -99,9 +103,9 @@ CREATE TABLE `servicos` (
 --
 
 INSERT INTO `servicos` (`ID`, `NOME`, `VALOR`, `TEMPO`, `DISPONIBILIDADE`, `DESCRICAO`) VALUES
-(2, 'Pintura personalizada1', 20, '01:30:00', 1, 'blablabla\r\n'),
-(4, 'Pintura personalizada 2', 20, '01:30:00', 1, 'Descricao'),
-(5, 'Pintura personalizada3', 20, '01:30:00', 1, 'tanto faz\r\n');
+(2, 'ServiÃ§o 1', 20, '01:00:00', 1, '                        blablabla\r\n                    '),
+(4, 'ServiÃ§o 2', 20, '01:00:00', 1, '                                                Descrigato\r\n                    '),
+(5, 'ServiÃ§o 3', 20, '01:00:00', 1, '                                                tanto faz1\r\n                                        ');
 
 -- --------------------------------------------------------
 
@@ -130,10 +134,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `pass`, `loginhash`, `telefone`, `DATACRI`, `DATAMOD`, `CLIENTE`, `ATENDENTE`, `EMAIL`, `DISPONIBILIDADE`, `TIPO`, `ativo`) VALUES
-(1, 'admin', '$2y$10$DeO2B4TBzs2COFvNBjAFYefZDOycO688/ngNsUuo0alzG3YvYTBXi', '290528b15f98df5aae4b352727cfcd80', 12345, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 1, 'admin@admin', '9,10,11,12', 1, 1),
-(2, 'fulana', '$2y$10$DeO2B4TBzs2COFvNBjAFYefZDOycO688/ngNsUuo0alzG3YvYTBXi', '12b46b4808f0271aa49693f16af936b6', 13215645, '2019-06-05 14:30:31', '0000-00-00 00:00:00', 1, 0, 'fulana@fulanaa', '', 0, 1),
-(10, 'sicrana', '$2y$10$DeO2B4TBzs2COFvNBjAFYefZDOycO688/ngNsUuo0alzG3YvYTBXi', NULL, 955321, '2019-06-05 14:23:51', '0000-00-00 00:00:00', 0, 1, 'sicrana@sicrana', '9,10,11,12,15,16,17,18', 0, 0),
-(11, 'beltrana', '$2y$10$DeO2B4TBzs2COFvNBjAFYefZDOycO688/ngNsUuo0alzG3YvYTBXi', NULL, 325165145, '2019-06-13 12:46:21', '0000-00-00 00:00:00', 0, 1, 'beltrana@beltrana', '14,15,16,17,18', 1, 1);
+(1, 'admin', '$2y$10$DeO2B4TBzs2COFvNBjAFYefZDOycO688/ngNsUuo0alzG3YvYTBXi', '1bdf7bf18eec3657ea4a468802c51918', 12345, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 1, 'admin@admin', '8,9,10,11,12,13,14,15,16,17,18', 1, 1),
+(2, 'fulana fulana', '$2y$10$DeO2B4TBzs2COFvNBjAFYefZDOycO688/ngNsUuo0alzG3YvYTBXi', 'd78df176e2ad05cf096132ae3ddfe59f', 13215645, '2019-06-05 14:30:31', '0000-00-00 00:00:00', 1, 0, 'fulana@fulana', '', 0, 1),
+(10, 'sicrana', '$2y$10$DeO2B4TBzs2COFvNBjAFYefZDOycO688/ngNsUuo0alzG3YvYTBXi', NULL, 955321, '2019-06-05 14:23:51', '0000-00-00 00:00:00', 0, 1, 'sicrana@sicrana', '9,10,11,12,13,14,15,16,17,18', 0, 1),
+(11, 'beltrana', '$2y$10$DeO2B4TBzs2COFvNBjAFYefZDOycO688/ngNsUuo0alzG3YvYTBXi', NULL, 325165145, '2019-06-13 12:46:21', '0000-00-00 00:00:00', 0, 1, 'beltrana@beltrana', '14,15,16,17,18,19,20', 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -171,7 +175,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `atendimentos`
 --
 ALTER TABLE `atendimentos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `confs`

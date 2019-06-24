@@ -37,7 +37,11 @@
                 <ul id="slide-out" class="sidenav sidenav-fixed">
                     <img class="responsive-img"  src="https://media.istockphoto.com/photos/various-hair-dresser-tools-on-pink-background-with-copy-space-picture-id1024577404">
                     <li>
-                        <a href="<?php echo BASE_URL; ?>agendamento/">Olá,<?php echo $viewData['name']; ?>!</a>
+                        <?php if ($viewData['tipo'] == true) { ?>
+                            <a href="<?php echo BASE_URL; ?>">Olá,<?php echo $viewData['name']; ?>!</a>
+                        <?php } else { ?>
+                            <a href="<?php echo BASE_URL; ?>agendamento/">Olá,<?php echo $viewData['name']; ?>!</a>
+                        <?php } ?>
                     </li>
                     <ul class="collapsible">
                         <li>
@@ -80,15 +84,7 @@
                                     </a>
                                 </div>
                             </li>
-                            <li>
-                                <div class="collapsible-header">
-                                    <i class="material-icons">new_releases</i>
-                                    Requisições
-                                    <a style="padding-left:60px;"href="#!" class="collection-item">
-                                        <span class="new badge pink lighten-2">4 </span>
-                                    </a>
-                                </div>
-                            </li>
+
                         <?php } ?>
                         <li>
 

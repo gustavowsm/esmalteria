@@ -27,7 +27,7 @@ $dia = explode(" ", $dataescolhida)[0];
         </tr>
         <?php foreach ($dados as $d) { ?>
             <tr>
-                <th><?php echo $d['NOME'] ?></th>
+                <th><?php echo utf8_encode($d['NOME']) ?></th>
                 <th><?php echo $d['VALOR'] ?> R$</th>
             </tr>
         <?php } ?>

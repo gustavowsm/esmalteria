@@ -29,18 +29,29 @@ class Confs extends model {
         return $array;
     }
 
+    public function getAtendente($id) {
+        $array = array();
+
+        $sql = "SELECT * FROM users WHERE  ID = $id";
+        $sql = $this->db->query($sql);
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetch();
+        }
+
+        return $array;
+    }
+
     public function update($abre, $fecha, $dias) {
         $sql = "UPDATE confs SET ABRE = :ABRE,FECHA = :FECHA,DIAS = :DIAS";
         $sql = $this->db->prepare($sql);
         $sql->bindValue(":ABRE", $abre);
         $sql->bindValue(":FECHA", $fecha);
         $sql->bindValue(":DIAS", $dias);
-        if($sql->execute()){
+        if ($sql->execute()) {
             return true;
-        }else{
+        } else {
             return false;
         }
-        
     }
 
 }

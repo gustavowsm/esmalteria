@@ -86,5 +86,33 @@ class Servicos extends model {
         $sql->execute();
     }
 
+    public function getAtendimentosDeHoje($datamarcada) {
+        $array = array();
+
+        $sql = "SELECT * FROM atendimentos WHERE DATAMARCADA  LIKE  '%$datamarcada%'";
+        $sql = $this->db->prepare($sql);
+        $sql->bindValue(':DATAMARCADA', $datamarcada);
+        $sql->execute();
+
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetchAll();
+        }
+
+        return $array;
+    }
+
+    public function getAtendimentosDeHoje2($datamarcada,$id) {
+        $array = array();
+        $sql = "SELECT * FROM atendimentos WHERE DATAMARCADA  LIKE  '%$datamarcada%' and ID_ATENDENTE = $id";
+        $sql = $this->db->prepare($sql);
+        $sql->bindValue(':ID', $id);
+        $sql->execute();
+
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetchAll();
+        }
+
+        return $array;
+    }
 
 }

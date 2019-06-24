@@ -111,6 +111,7 @@ class agendamentoController extends controller {
         /** Compara as datas normalmente com operadores de comparacao < > = e != */
         if ($data1 > $data2 or $data1 == $data2) {
             $c = new Confs();
+            $s = new Servicos();
             $data['tipo'] = $this->user->getTipo();
             $data['name'] = $this->user->getName();
             $hoje = getdate(strtotime('now'));
@@ -118,12 +119,29 @@ class agendamentoController extends controller {
             $data['dia'] = $dia;
             $data['confs'] = $c->getConfs();
             $data['atendentes'] = $c->getAtendentes();
+            $datamarcada = date("Y-m-d", mktime(0, 0, 0, date('m'), $dia, date('Y')));
+            $data['servicoshj'] = $s->getAtendimentosDeHoje($datamarcada);
             $this->loadTemplate('agendamento', $data);
         }
         if ($data1 < $data2) {
             //mandar uma mensagem depois dizendo que a data escolhida ja passou
             header('Location:' . BASE_URL . 'agendamento?error=1');
         }
+    }
+
+    public function confere() {
+        $c = new Confs();
+        $s = new Servicos();
+        $data['tipo'] = $this->user->getTipo();
+        $data['name'] = $this->user->getName();
+        $hoje = getdate(strtotime('now'));
+        $data['hoje'] = $hoje;
+        $data['dia'] = $_GET['data'];
+        $data['confs'] = $c->getConfs();
+        $data['atendentes'] = $c->getAtendente($_GET['idatd']);
+        $datamarcada = date("Y-m-d", mktime(0, 0, 0, date('m'), $_GET['data'], date('Y')));
+        $data['servicoshj2'] = $s->getAtendimentosDeHoje2($datamarcada, $_GET['idatd']);
+        $this->loadTemplate('confere', $data);
     }
 
     public function servicos() {

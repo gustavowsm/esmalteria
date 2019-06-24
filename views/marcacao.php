@@ -25,7 +25,7 @@
             <div class="input-field col s9">
                 <select multiple required="true" name="servico[]">
                     <?php foreach ($servicos as $s) { ?>
-                        <option value="<?php echo $s['ID'] . ","; ?>"><?php echo $s['NOME'] ?>-<?php echo $s['VALOR'] ?> R$</option>
+                    <option value="<?php echo $s['ID'] . ","; ?>"><?php echo utf8_encode($s['NOME']) ?>-<?php echo $s['VALOR'] ?> R$</option>
                     <?php } ?>
                 </select>
             </div>

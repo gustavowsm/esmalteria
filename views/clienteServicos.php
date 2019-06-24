@@ -1,4 +1,4 @@
-<>
+
 <table border="1" width="100%" class="striped">
     <tr>
         <th>ID</th>
