@@ -1,10 +1,12 @@
 <?php
 
-class agendamentoController extends controller {
+class agendamentoController extends controller
+{
 
     private $user;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->user = new Users();
         date_default_timezone_set('America/Sao_Paulo');
         if (!$this->user->verifyLogin()) {
@@ -13,91 +15,16 @@ class agendamentoController extends controller {
         }
     }
 
-    public function index() {
+    public function index()
+    {
         $data['tipo'] = $this->user->getTipo();
         $data['name'] = $this->user->getName();
         $user = new Users();
         $this->loadTemplate('calendario', $data);
-
-
-        $hoje = getdate(strtotime('now'));
-
-        $ultimoDia = cal_days_in_month(CAL_GREGORIAN, $hoje['mon'], $hoje['year']);
-
-        $primeiraSemana = (($hoje['wday'] + 1) - ($hoje['mday'] - ((int) ($hoje['mday'] / 6) * 7))) % 7;
-// Alternativa:
-        /* $primeiroDiaTimestamp = strtotime(sprintf("%d-%0d-01",
-          $hoje['year'],
-          $hoje['mon']));
-          $primeiraSemana = (int)date('w', $primeiroDiaTimestamp); */
-        ?>
-        <div class="container">
-            <div id="align">
-                <style>
-                    td[data-semana="0"] { color: #ff0000; }
-                    #align{
-                        padding-left: 400px;
-                    }
-                </style>
-                <?php
-                if (!empty($_GET['error'])) {
-                    if ($_GET['error'] == '1') {
-                        echo '<script>
-  var txt;
-  var r = confirm("Selecione um dia válido!\nNão é possível fazer agendamentos em datas passadas!   ");
-  if (r == true) {
-    txt = window.location.href="' . BASE_URL . 'agendamento/";
-  } else {
-    txt = "You pressed Cancel!";
-  }
-</script>';
-                    }
-                }
-                ?>
-
-                <h2>Selecione uma data:</h2>
-                <p><?=
-                    sprintf('Hoje é dia <strong>%0d / %0d</strong>.', $hoje['mday'], $hoje['mon'], $hoje['hours'], $hoje['minutes'])
-                    ?>
-
-                </p>
-                <table border="1">
-                    <tr>
-                        <th>Dom</th>
-                        <th>Seg</th>
-                        <th>Ter</th>
-                        <th>Qua</th>
-                        <th>Qui</th>
-                        <th>Sex</th>
-                        <th>Sáb</th>
-                    </tr>
-                    <tr>
-                        <?php
-                        for ($semana = 0; $semana < $primeiraSemana; ++$semana) {
-                            echo '<td>&nbsp;</td>';
-                        }
-                        for ($dia = 1; $dia < $ultimoDia; ++$dia) {
-                            if ($semana > 6) {
-                                $semana = 0;
-                                echo '</tr><tr>';
-                            }
-
-                            echo "<td data-semana=\"$semana\">";
-                            echo "<a href='" . BASE_URL . "agendamento/data/" . $dia . "'>$dia</a></td>";
-                            ++$semana;
-                        }
-                        for (; $semana < 7; ++$semana) {
-                            echo '<td>&nbsp;</td>';
-                        }
-                        ?>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <?php
     }
 
-    public function data($dia) {
+    public function data($dia)
+    {
         $timeZone = new DateTimeZone('UTC');
         $data1 = DateTime::createFromFormat('d', $dia, $timeZone);
         $data2 = DateTime::createFromFormat('d', date('d'), $timeZone);
@@ -129,7 +56,8 @@ class agendamentoController extends controller {
         }
     }
 
-    public function confere() {
+    public function confere()
+    {
         $c = new Confs();
         $s = new Servicos();
         $data['tipo'] = $this->user->getTipo();
@@ -144,28 +72,29 @@ class agendamentoController extends controller {
         $this->loadTemplate('confere', $data);
     }
 
-    public function servicos() {
+    public function servicos()
+    {
         $u = new Users();
         $s = new Servicos();
         $data['tipo'] = $this->user->getTipo();
         $data['name'] = $this->user->getName();
         if (isset($_GET['data']) && !empty($_GET['data']) &&
-                isset($_GET['horario']) && !empty($_GET['horario']) &&
-                isset($_GET['idatd']) && !empty($_GET['idatd'])) {
+            isset($_GET['horario']) && !empty($_GET['horario']) &&
+            isset($_GET['idatd']) && !empty($_GET['idatd'])) {
             //data escolhida para realizar o servico
             $data['dataEscolhida'] = date("Y-m-d H:i:s", mktime(
-                            //horario escolhido
-                            $_GET['horario'],
-                            //hora
-                            0,
-                            //minutos
-                            0,
-                            //segundos
-                            date('m'),
-                            //meses
-                            $_GET['data'],
-                            //dias  
-                            date('o')));
+                //horario escolhido
+                $_GET['horario'],
+                //hora
+                0,
+                //minutos
+                0,
+                //segundos
+                date('m'),
+                //meses
+                $_GET['data'],
+                //dias
+                date('o')));
             //hora da exata da marcacao do servico
             $data['agora'] = date("Y-m-d H:i:s");
             //servicos
@@ -175,16 +104,17 @@ class agendamentoController extends controller {
         }
     }
 
-    public function confirma() {
+    public function confirma()
+    {
         $u = new Users();
         $s = new Servicos();
         $data['tipo'] = $this->user->getTipo();
         $data['name'] = $this->user->getName();
         if (isset($_POST['servico']) && !empty($_POST['servico']) &&
-                isset($_POST['nome']) && !empty($_POST['nome']) &&
-                isset($_POST['atendente']) && !empty($_POST['atendente']) &&
-                isset($_POST['idatendente']) && !empty($_POST['idatendente']) &&
-                isset($_POST['dataescolhida']) && !empty($_POST['dataescolhida'])) {
+            isset($_POST['nome']) && !empty($_POST['nome']) &&
+            isset($_POST['atendente']) && !empty($_POST['atendente']) &&
+            isset($_POST['idatendente']) && !empty($_POST['idatendente']) &&
+            isset($_POST['dataescolhida']) && !empty($_POST['dataescolhida'])) {
             //primeiro eu to recebendo o meu array e juntando ele
             //depois eu to tirando o ultimo caractere
             $ids = substr(implode("", $_POST['servico']), 0, -1);
@@ -198,16 +128,17 @@ class agendamentoController extends controller {
         }
     }
 
-    public function finaliza() {
+    public function finaliza()
+    {
         $u = new Users();
         $s = new Registros();
         $data['tipo'] = $this->user->getTipo();
         $data['name'] = $this->user->getName();
         if (isset($_POST['idatendente']) && !empty($_POST['idatendente']) &&
-                isset($_POST['total']) && !empty($_POST['total']) &&
-                isset($_POST['servicos']) && !empty($_POST['servicos']) &&
-                isset($_POST['pagamento']) && !empty($_POST['pagamento']) &&
-                isset($_POST['datamarcada']) && !empty($_POST['datamarcada'])) {
+            isset($_POST['total']) && !empty($_POST['total']) &&
+            isset($_POST['servicos']) && !empty($_POST['servicos']) &&
+            isset($_POST['pagamento']) && !empty($_POST['pagamento']) &&
+            isset($_POST['datamarcada']) && !empty($_POST['datamarcada'])) {
             $idatendente = $_POST['idatendente'];
             $valorpago = $_POST['total'];
             $idservico = $_POST['servicos'];

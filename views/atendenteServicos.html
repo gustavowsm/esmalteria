@@ -1,0 +1,45 @@
+2<div class="container">
+	<div class="row">
+<table  id="example" class="table table-striped table-bordered" style="width:100%">
+<thead>
+    <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Serviços</th>
+        <th>Valor total</th>
+        <th>Pagamento</th>
+        <th>Data e horário</th>
+    </tr>
+</thead>
+<tbody>
+    <?php foreach ($atendimentos as $a) { ?>
+        <tr>
+            <td> <?php echo $a['ID'] ?></td>
+            <td> <?php echo $a['ID_CLIENTE'] ?></td>
+            <td> <?php
+                echo $idservs[] = $a['ID_SERVICO'];
+                ?></td> 
+            <td> <?php echo $a['VALOR_PAGO'] ?></td>
+            <td> <?php echo $a['METODO'] ?></td>
+            <td> <?php $date = new DateTime($a['DATAMARCADA']);
+            echo $date->format('d/m/Y H:i:s');
+            ?></td>
+        </tr>
+
+    <?php }
+    ?>
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Serviços</th>
+        <th>Valor total</th>
+        <th>Pagamento</th>
+        <th>Data e horário</th>
+    </tr>
+    </tfoot>
+</thead>
+</table>
+    </div>
+    </div>

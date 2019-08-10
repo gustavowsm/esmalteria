@@ -4,13 +4,13 @@ require 'environment.php';
 $config = array();
 if(ENVIRONMENT == 'development') {
 	define("BASE_URL", "http://localhost/esmalteria/");
-	$config['dbname'] = 'crud_mvc';
+	$config['dbname'] = 'esmalteria';
 	$config['host'] = 'localhost';
 	$config['dbuser'] = 'root';
 	$config['dbpass'] = '';
 } else {
 	define("BASE_URL", "http://meusite.com.br/");
-	$config['dbname'] = 'crudoo';
+	$config['dbname'] = 'esmalteria';
 	$config['host'] = 'localhost';
 	$config['dbuser'] = 'root';
 	$config['dbpass'] = 'root';

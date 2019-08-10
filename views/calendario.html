@@ -1,0 +1,72 @@
+<?php
+$hoje = getdate(strtotime('now'));
+
+$ultimoDia = cal_days_in_month(CAL_GREGORIAN, $hoje['mon'], $hoje['year']);
+
+$primeiraSemana = (($hoje['wday'] + 1) - ($hoje['mday'] - ((int) ($hoje['mday'] / 6) * 7))) % 7;
+// Alternativa:
+/* $primeiroDiaTimestamp = strtotime(sprintf("%d-%0d-01",
+$hoje['year'],
+$hoje['mon']));
+$primeiraSemana = (int)date('w', $primeiroDiaTimestamp); */
+?>
+<div class="container">
+
+        <?php
+if (!empty($_GET['error'])) {
+    if ($_GET['error'] == '1') {
+        echo '<script>
+var txt;
+var r = confirm("Selecione um dia válido!\nNão é possível fazer agendamentos em datas passadas!   ");
+if (r == true) {
+txt = window.location.href="' . BASE_URL . 'agendamento/";
+} else {
+txt = "You pressed Cancel!";
+}
+</script>';
+    }
+}
+?>
+
+        <h2>Selecione uma data:</h2>
+        <p><?=
+sprintf('Hoje é dia <strong>%0d / %0d</strong>.', $hoje['mday'], $hoje['mon'], $hoje['hours'], $hoje['minutes'])
+?>
+
+        </p>
+        <table border="1" width="100%" class="table table-striped table-bordered" id="example">
+        <thead>
+            <tr>
+                <th>Dom</th>
+                <th>Seg</th>
+                <th>Ter</th>
+                <th>Qua</th>
+                <th>Qui</th>
+                <th>Sex</th>
+                <th>Sáb</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <?php
+for ($semana = 0; $semana < $primeiraSemana; ++$semana) {
+    echo '<td>&nbsp;</td>';
+}
+for ($dia = 1; $dia < $ultimoDia; ++$dia) {
+    if ($semana > 6) {
+        $semana = 0;
+        echo '</tr><tr>';
+    }
+
+    echo "<td data-semana=\"$semana\">";
+    echo "<a href='" . BASE_URL . "agendamento/data/" . $dia . "'>$dia</a></td>";
+    ++$semana;
+}
+for (; $semana < 7; ++$semana) {
+    echo '<td>&nbsp;</td>';
+}
+?>
+            </tr>
+            </tbody>
+        </table>
+    </div>

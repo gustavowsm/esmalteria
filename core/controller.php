@@ -3,16 +3,16 @@ class controller {
 
 	public function loadView($viewName, $viewData = array()) {
 		extract($viewData);
-		require 'views/'.$viewName.'.php';
+		require 'views/'.$viewName.'.html';
 	}
 
 	public function loadTemplate($viewName, $viewData = array()) {
-		require 'views/template.php';
+		require 'views/template.html';
 	}
 
 	public function loadViewInTemplate($viewName, $viewData = array()) {
 		extract($viewData);
-		require 'views/'.$viewName.'.php';
+		require 'views/'.$viewName.'.html';
 	}
 
 }
