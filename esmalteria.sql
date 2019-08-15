@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 08-Ago-2019 �s 17:44
--- Vers�o do servidor: 10.1.31-MariaDB
+-- Generation Time: 15-Ago-2019 às 18:18
+-- Versão do servidor: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `crud_mvc`
+-- Database: `esmalteria`
 --
 
 -- --------------------------------------------------------
@@ -62,7 +62,11 @@ INSERT INTO `atendimentos` (`ID`, `ID_ATENDENTE`, `ID_CLIENTE`, `ID_SERVICO`, `N
 (13, 11, 2, '2', 'fulana', '20', '01:30:00', 'dinheiro', '2019-06-22 23:49:49', '0000-00-00 00:00:00', '2019-06-26 14:00:00'),
 (14, 11, 2, '4', 'fulana', '20', '01:00:00', 'credito', '2019-06-23 17:11:38', '0000-00-00 00:00:00', '2019-06-26 15:00:00'),
 (15, 11, 1, '2,4,5', 'admin', '60', '03:00:00', 'debito', '2019-06-23 20:16:26', '0000-00-00 00:00:00', '2019-06-26 16:00:00'),
-(16, 11, 2, '2,4', 'fulana fulana', '40', '02:00:00', 'dinheiro', '2019-07-26 13:59:00', '0000-00-00 00:00:00', '2019-07-29 14:00:00');
+(16, 11, 2, '2,4', 'fulana fulana', '40', '02:00:00', 'dinheiro', '2019-07-26 13:59:00', '0000-00-00 00:00:00', '2019-07-29 14:00:00'),
+(17, 1, 1, '2,4', 'admin', '40', '02:00:00', 'credito', '2019-08-09 14:10:07', '0000-00-00 00:00:00', '2019-08-29 12:00:00'),
+(18, 1, 1, '2,4,5', 'admin', '60', '03:00:00', 'debito', '2019-08-09 14:10:23', '0000-00-00 00:00:00', '2019-08-29 12:00:00'),
+(19, 1, 1, '4,5', 'admin', '40', '02:00:00', 'debito', '2019-08-10 10:11:45', '0000-00-00 00:00:00', '2019-08-13 13:00:00'),
+(20, 11, 1, '2,4,5', 'admin', '60', '03:00:00', 'debito', '2019-08-12 20:08:21', '0000-00-00 00:00:00', '2019-08-22 16:00:00');
 
 -- --------------------------------------------------------
 
@@ -74,15 +78,35 @@ CREATE TABLE `confs` (
   `id` int(11) NOT NULL,
   `ABRE` time NOT NULL,
   `FECHA` time NOT NULL,
-  `DIAS` varchar(60) NOT NULL
+  `SEG` int(11) NOT NULL,
+  `SEGABRE` time NOT NULL,
+  `SEGFECHA` time NOT NULL,
+  `TER` int(11) NOT NULL,
+  `TERABRE` time NOT NULL,
+  `TERFECHA` time NOT NULL,
+  `QUA` int(11) NOT NULL,
+  `QUAABRE` time NOT NULL,
+  `QUAFECHA` time NOT NULL,
+  `QUI` int(11) NOT NULL,
+  `QUIABRE` time NOT NULL,
+  `QUIFECHA` time NOT NULL,
+  `SEX` int(11) NOT NULL,
+  `SEXABRE` time NOT NULL,
+  `SEXFECHA` time NOT NULL,
+  `SAB` int(11) NOT NULL,
+  `SABABRE` time NOT NULL,
+  `SABFECHA` time NOT NULL,
+  `DOM` int(11) NOT NULL,
+  `DOMABRE` time NOT NULL,
+  `DOMFECHA` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `confs`
 --
 
-INSERT INTO `confs` (`id`, `ABRE`, `FECHA`, `DIAS`) VALUES
-(1, '08:00:00', '18:00:00', 'seg,ter,qua,qui,sex');
+INSERT INTO `confs` (`id`, `ABRE`, `FECHA`, `SEG`, `SEGABRE`, `SEGFECHA`, `TER`, `TERABRE`, `TERFECHA`, `QUA`, `QUAABRE`, `QUAFECHA`, `QUI`, `QUIABRE`, `QUIFECHA`, `SEX`, `SEXABRE`, `SEXFECHA`, `SAB`, `SABABRE`, `SABFECHA`, `DOM`, `DOMABRE`, `DOMFECHA`) VALUES
+(1, '08:00:00', '18:00:00', 1, '08:00:00', '14:00:00', 1, '07:00:00', '13:00:00', 1, '06:00:00', '12:00:00', 1, '07:00:00', '13:00:00', 1, '05:00:00', '18:00:00', 1, '07:00:00', '13:00:00', 1, '08:00:00', '12:00:00');
 
 -- --------------------------------------------------------
 
@@ -104,7 +128,7 @@ CREATE TABLE `servicos` (
 --
 
 INSERT INTO `servicos` (`ID`, `NOME`, `VALOR`, `TEMPO`, `DISPONIBILIDADE`, `DESCRICAO`) VALUES
-(2, 'Serviço 1', 20, '01:00:00', 1, '                        blablabla\r\n                    '),
+(2, 'ServiÃ§o 1', 20, '01:00:00', 1, '                        blablabla                    '),
 (4, 'Serviço 2', 20, '01:00:00', 1, '                                                Descrigato\r\n                    '),
 (5, 'Serviço 3', 20, '01:00:00', 1, '                                                tanto faz1\r\n                                        ');
 
@@ -135,10 +159,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `pass`, `loginhash`, `telefone`, `DATACRI`, `DATAMOD`, `CLIENTE`, `ATENDENTE`, `EMAIL`, `DISPONIBILIDADE`, `TIPO`, `ativo`) VALUES
-(1, 'admin', '$2y$10$DeO2B4TBzs2COFvNBjAFYefZDOycO688/ngNsUuo0alzG3YvYTBXi', 'de554e31d6a8278676897560cac70075', 12345, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 1, 'admin@admin', '8,9,10,11,12,13,14,15,16,17,18', 1, 1),
+(1, 'admin', '$2y$10$DeO2B4TBzs2COFvNBjAFYefZDOycO688/ngNsUuo0alzG3YvYTBXi', '1c44286495346fec76b2d734d16e95fa', 12345, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 1, 'admin@admin', '8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23', 1, 1),
 (2, 'fulana fulana', '$2y$10$DeO2B4TBzs2COFvNBjAFYefZDOycO688/ngNsUuo0alzG3YvYTBXi', '1953f63755350360b67240c5a45170d6', 13215645, '2019-06-05 14:30:31', '0000-00-00 00:00:00', 1, 0, 'fulana@fulana', '', 0, 1),
 (10, 'sicrana', '$2y$10$DeO2B4TBzs2COFvNBjAFYefZDOycO688/ngNsUuo0alzG3YvYTBXi', NULL, 955321, '2019-06-05 14:23:51', '0000-00-00 00:00:00', 0, 1, 'sicrana@sicrana', '9,10,11,12,13,14,15,16,17,18', 0, 1),
-(11, 'beltrana', '$2y$10$DeO2B4TBzs2COFvNBjAFYefZDOycO688/ngNsUuo0alzG3YvYTBXi', NULL, 325165145, '2019-06-13 12:46:21', '0000-00-00 00:00:00', 0, 1, 'beltrana@beltrana', '14,15,16,17,18,19,20', 1, 1);
+(11, 'beltrana', '$2y$10$DeO2B4TBzs2COFvNBjAFYefZDOycO688/ngNsUuo0alzG3YvYTBXi', NULL, 325165145, '2019-06-13 12:46:21', '0000-00-00 00:00:00', 0, 1, 'beltrana@beltrana', '8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23', 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -176,7 +200,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `atendimentos`
 --
 ALTER TABLE `atendimentos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `confs`
