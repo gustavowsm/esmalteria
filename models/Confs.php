@@ -5,7 +5,7 @@ class Confs extends model {
     public function getConfs() {
         $array = array();
 
-        $sql = "SELECT ABRE,FECHA,DIAS FROM confs";
+        $sql = "SELECT * FROM confs";
         $sql = $this->db->query($sql);
 
         if ($sql->rowCount() > 0) {
