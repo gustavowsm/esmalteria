@@ -1,38 +1,60 @@
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Editar serviço</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="<?php echo BASE_URL ?>servicos/true_edit">
+                            <div class="row">
+                                <div class="col-md-6 pr-1">
+                                    <div class="form-group">
+                                        <label>Nome</label>
+                                        <input type="text" class="form-control"  name="nome"
+                                            required type="text" value="<?php echo $servico['NOME'] ?>">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-1">
+                                    <div class="form-group">
+                                        <label>Valor:</label>
+                                        <input type="text" class="form-control" name="valor"
+                                        required value="<?php echo $servico['VALOR'] ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Tempo estimado</label>
+                                        <input type="text" class="form-control"  name="tempo"
+                                        required  value="<?php echo $servico['TEMPO'] ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Descrição</label>
+                                        <input type="text" class="form-control" name="descricao"
+                                        required  value="<?php echo $servico['DESCRICAO'] ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="id" value="<?php echo $servico['ID'];?>">
 
-<div class="container">
-    <div class="row">
-        <form class="col s12" method="POST" action="<?php echo BASE_URL ?>servicos/true_edit">
-            <div class="row">
-                <div class="input-field col s6">
-                    <input type="hidden" name="id" value="<?php echo $servico['ID'];?>">
-                    <i class="material-icons prefix">note_add</i>
-                    <input name="nome" id="icon_prefix" type="text" value="<?php echo $servico['NOME'] ?>" class="validate">
-                    <label for="icon_prefix">Nome do serviço</label>
-                </div>
-                <div class="input-field col s6">
-                    <i class="material-icons prefix">monetization_on</i>
-                    <input name="valor" id="icon_telephone" value="<?php echo$servico['VALOR']; ?>" type="tel" class="validate">
-                    <label for="icon_telephone">Valor</label>
+                            <button type="submit" class="btn btn-info btn-fill pull-right">Atualizar perfil</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix ">timer</i>
-                    <input id="icon_prefix" type="time"  value="<?php echo $servico['TEMPO']; ?>" name="tempo" class="datepicker ">
-                    <label for="icon_prefix">Tempo estimado:</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">description</i>
-                    <textarea id="textarea1" name="descricao" class="materialize-textarea">
-                        <?php echo $servico['DESCRICAO']; ?>
-                    </textarea>
-                    <label for="textarea1">Descrição</label>
-                </div>
-            </div>
-            <button type="submit" class="waves-effect waves-light btn pink lighten-2">Editar</button>
-        </form>
+        </div>
     </div>
 </div>
+
+</div>
+</div>
+
 

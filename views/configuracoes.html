@@ -1,71 +1,104 @@
-
-<div class="card pink lighten-2">
-    <div class="card-content white-text">
+<?php
+$dias = explode(",", $confs['DIAS']);
+?>
+<div class="content">
+    <div class="container-fluid">
         <div class="row">
-            <form class="col s12" method="POST" action="<?php echo BASE_URL; ?>configuracoes/altera/ ">
-                <span>Horário de funcionamento:</span>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix">access_time</i>
-                        <input  name="abre" style="color:#fff;"id="icon_prefix" type="time" value="<?php echo $confs['ABRE'] ?>" >
-                        <label style="color: white">Abre</label>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Configurações da loja</h4>
                     </div>
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix">access_time</i>
-                        <input  name="fecha" style="color:#fff;"id="icon_prefix" type="time"  value="<?php echo $confs['FECHA'] ?>">
-                        <label style="color: white">Fecha</label>
-                    </div>
-                </div>
-                <?php
-                $dias = explode(",", $confs['DIAS']);
-                ?>
-                <div class="row" >
-                    <div class="input-field col s6">
-                        Dias de funcionamento:
-                        <p><label><input name="dias[]" type="checkbox" value="seg" <?php
-                                if ($dias[0] == 'seg') {
-                                    echo "checked";
-                                }
-                                ?> /><span style="color: white;">Segunda</span> </label></p>
-                        <p><label><input name="dias[]" type="checkbox" value="ter"  <?php
-                                if ($dias[1] == 'ter') {
-                                    echo "checked";
-                                }
-                                ?>/><span style="color: white;">Terça</span> </label></p>
-                        <p><label><input name="dias[]" type="checkbox" value="qua"  <?php
-                                if ($dias[2] == 'qua') {
-                                    echo "checked";
-                                }
-                                ?>/><span style="color: white;">Quarta</span> </label></p>
-                        <p><label><input name="dias[]" type="checkbox" value="qui"  <?php
-                                if ($dias[3] == 'qui') {
-                                    echo "checked";
-                                }
-                                ?>/><span style="color: white;">Quinta</span> </label></p>
-                        <p><label><input name="dias[]" type="checkbox" value="sex"  <?php
-                                if ($dias[4] == 'sex') {
-                                    echo "checked";
-                                }
-                                ?>/><span style="color: white;">Sexta</span> </label></p>
-                        <p><label><input name="dias[]" type="checkbox" value="sab"  <?php
-                                if (!empty($dias[5]) == 'sab') {
-                                    echo "checked";
-                                }
-                                ?>/><span style="color: white;">Sábado</span> </label></p>
-                        <p><label><input name="dias[]" type="checkbox" value="dom"  <?php
-                                if (!empty($dias[6]) == 'dom') {
-                                    echo "checked";
-                                }
-                                ?>/><span style="color: white;">Domingo</span> </label></p>
-                    </div>
-                    <div class="input-field col s6">
-                        Feriados:
-                    </div>
-                </div>
+                    <div class="card-body">
+                        <form method="POST" action="<?php echo BASE_URL; ?>configuracoes/altera/ ">
+                            <span>Horário de funcionamento:</span>
+                            <div class="row">
+                                <div class="col-md-6 pl-1">
+                                    <div class="form-group">
+                                        <label>Abre as:</label>
+                                        <input type="time" name="abre" class="form-control" placeholder="Company"
+                                            value="<?php echo $confs['ABRE'] ?>" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pr-1">
+                                    <div class="form-group">
+                                        <label>Fecha as:</label>
+                                        <input type="time" name="fecha" class="form-control" placeholder="Company"
+                                            value="<?php echo $confs['FECHA'] ?>" />
+                                    </div>
+                                </div>
 
-                <button type="submit" onclick="submit()" class="waves-effect waves-light btn white"><p style="color:#f06292;">Alterar</p></button>
-            </form>
+                            </div>
+                            <div class="row">
+                                <div="input-field col s6">
+                                    Dias de funcionamento:
+                            </div><br>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="dias[]"
+                                        <?php !empty($dias[0])? 'checked':''  ?> type="checkbox" value="seg">
+                                    <span class="form-check-sign"></span>
+                                    Segunda
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="dias[]"
+                                        <?php if ($dias[1] == 'ter') {echo "checked";}?> type="checkbox" value="ter" />
+                                    <span class="form-check-sign"></span>
+                                    Terça
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="dias[]"
+                                        <?php if ($dias[2] == 'qua') {echo "checked";}?> type="checkbox" value="qua">
+                                    <span class="form-check-sign"></span>
+                                    Quarta
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="dias[]"
+                                        <?php if ($dias[3] == 'qui') {echo "checked";}?> type="checkbox" value="qui">
+                                    <span class="form-check-sign"></span>
+                                    Quinta
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="dias[]"
+                                        <?php if ($dias[4] == 'sex') {echo "checked";}?> type="checkbox" value="sex">
+                                    <span class="form-check-sign"></span>
+                                    Sexta
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="dias[]"
+                                        <?php if ($dias[5] == 'sab') {echo "checked";}?> type="checkbox" value="sab">
+                                    <span class="form-check-sign"></span>
+                                    Sabado
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="dias[]"
+                                        <?php if ($dias[6] == 'dom') {echo "checked";}?> type="checkbox" value="dom">
+                                    <span class="form-check-sign"></span>
+                                    Domingo
+                                </label>
+                            </div>
+
+                            <!--Feriados-->
+                    </div>
+
+                    <button class="btn btn-primary btn-simple" type="submit">
+                        Alterar
+                    </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-

@@ -1,10 +1,12 @@
 <?php
 
-class configuracoesController extends controller {
+class configuracoesController extends controller
+{
 
     private $user;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->user = new Users();
         if (!$this->user->verifyLogin()) {
             header("Location: " . BASE_URL . "login");
@@ -12,7 +14,8 @@ class configuracoesController extends controller {
         }
     }
 
-    public function index() {
+    public function index()
+    {
         if ($this->user->getTipo() == 1) {
             $c = new Confs();
             $data['tipo'] = $this->user->getTipo();
@@ -24,15 +27,17 @@ class configuracoesController extends controller {
         }
     }
 
-    public function altera() {
+    public function altera()
+    {
         $c = new Confs();
         if (isset($_POST['abre']) && !empty($_POST['abre']) &&
-                isset($_POST['fecha']) && !empty($_POST['fecha']) &&
-                isset($_POST['dias']) && !empty($_POST['dias'])) {
+            isset($_POST['fecha']) && !empty($_POST['fecha']) &&
+            isset($_POST['dias']) && !empty($_POST['dias'])) {
             echo $abre = $_POST['abre'];
             echo "<br>";
             echo $fecha = $_POST['fecha'];
             echo "<br>";
+
             echo $dias = implode(",", $_POST['dias']);
             if ($c->update($abre, $fecha, $dias) == true) {
                 header("Location:" . BASE_URL . "configuracoes/");

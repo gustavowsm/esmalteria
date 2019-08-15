@@ -6,7 +6,6 @@ class homeController extends controller {
 
     public function __construct() {
         $this->user = new Users();
-
         if (!$this->user->verifyLogin()) {
             header("Location: " . BASE_URL . "login");
             exit;
@@ -20,8 +19,7 @@ class homeController extends controller {
         $user = new Users();
         $atendimentos = new Registros();     
         $data['atendimentos'] = $atendimentos->getTodosRegistros();
-        $this->loadTemplate('home', $data);
-        
+        $this->loadTemplate('home', $data);        
         }else{
             header("Location:".BASE_URL."agendamento/index");
         }
