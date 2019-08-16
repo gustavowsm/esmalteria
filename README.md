@@ -8,7 +8,7 @@ Para a instalação do projeto em sua máquina,siga os seguintes passos:<br/>
 <li>Execute o script</li>
 <li>Caso esteja no XAMPP,o abra e dê start nas opções "Apache" e "MySql"</li>
 <li>No caso do WAMPP,escolha "start all services"</li>
-<li>Depois que os serviços se mostrarem operantes,acesse o seguinte endereço: <a href="localhost/esmalteria">"localhost/esmalteria"</a></li>
+<li>Depois que os serviços se mostrarem operantes,acesse o seguinte endereço: <a href="http://localhost/esmalteria">"localhost/esmalteria"</a></li>
 <li>Utilize as seguintes credenciais para fazer login:
 <ul><li> Usuário:admin</li><li>Senha:123 </li> </ul></li>
 </ol>
