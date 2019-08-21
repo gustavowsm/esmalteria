@@ -22,10 +22,12 @@ class usuariosController extends controller {
     }
 
     public function editar($id) {
+        $c = new Confs();
         $data['id'] = $id;
         $data['userdata'] = $this->user->getData($id);
         $data['tipo'] = $this->user->getTipo();
         $data['name'] = $this->user->getName();
+        $data['confs'] = $c->getHorariosAtendente($id);
         $this->loadTemplate('edit', $data);
     }
 

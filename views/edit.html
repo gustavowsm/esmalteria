@@ -36,7 +36,168 @@
                             <input name="cliente" type="hidden" value="<?php echo $userdata['CLIENTE']; ?>">
                             <?php $horarios = explode(",", $userdata['DISPONIBILIDADE']);
                             if ($userdata['ATENDENTE'] == 1 && $userdata['CLIENTE'] == 0) { ?>
-                            <div class="row">
+                                <div class="row">
+                                    <div class="col-md-4 pl-1">
+                                        <div class="form-group">
+                                            <label>Segunda:</label>
+                                            <input type="checkbox" name="seg" class="form-control"
+                                                <?php echo $confs['SEG'] == 1?'checked':'' ?> />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pl-1">
+                                        <div class="form-group">
+                                            <label>Abre as:</label>
+                                            <input type="time" name="segentra" class="form-control" 
+                                                value="<?php echo $confs['SEGENTRA'] ?>" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pr-1">
+                                        <div class="form-group">
+                                            <label>Fecha as:</label>
+                                            <input type="time" name="segsai" class="form-control" 
+                                                value="<?php echo $confs['SEGSAI'] ?>" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 pl-1">
+                                        <div class="form-group">
+                                            <label>Terça:</label>
+                                            <input type="checkbox" name="ter" class="form-control" 
+                                                <?php echo $confs['TER'] == 1?'checked':'' ?> />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pl-1">
+                                        <div class="form-group">
+                                            <label>Abre as:</label>
+                                            <input type="time" name="terentra" class="form-control" 
+                                                value="<?php echo $confs['TERENTRA'] ?>" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pr-1">
+                                        <div class="form-group">
+                                            <label>Fecha as:</label>
+                                            <input type="time" name="terfecha" class="form-control" 
+                                                value="<?php echo $confs['TERSAI'] ?>" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 pl-1">
+                                        <div class="form-group">
+                                            <label>Quarta:</label>
+                                            <input type="checkbox" name="qua" class="form-control"
+                                                <?php echo $confs['QUA'] == 1?'checked':'' ?> />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pl-1">
+                                        <div class="form-group">
+                                            <label>Abre as:</label>
+                                            <input type="time" name="quaabre" class="form-control"
+                                                value="<?php echo $confs['QUAENTRA'] ?>" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pr-1">
+                                        <div class="form-group">
+                                            <label>Fecha as:</label>
+                                            <input type="time" name="quafecha" class="form-control" 
+                                                value="<?php echo $confs['QUASAI'] ?>" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 pl-1">
+                                        <div class="form-group">
+                                            <label>Quinta:</label>
+                                            <input type="checkbox" name="qui" class="form-control" 
+                                                <?php echo $confs['QUI'] == 1?'checked':'' ?> />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pl-1">
+                                        <div class="form-group">
+                                            <label>Abre as:</label>
+                                            <input type="time" name="quientra" class="form-control" 
+                                                value="<?php echo $confs['QUIENTRA'] ?>" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pr-1">
+                                        <div class="form-group">
+                                            <label>Fecha as:</label>
+                                            <input type="time" name="quisai" class="form-control" 
+                                                value="<?php echo $confs['QUISAI'] ?>" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 pl-1">
+                                        <div class="form-group">
+                                            <label>Segunda:</label>
+                                            <input type="checkbox" name="sex" class="form-control" 
+                                                <?php echo $confs['SEX'] == 1?'checked':'' ?> />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pl-1">
+                                        <div class="form-group">
+                                            <label>Abre as:</label>
+                                            <input type="time" name="sexentra" class="form-control" 
+                                                value="<?php echo $confs['SEXENTRA'] ?>" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pr-1">
+                                        <div class="form-group">
+                                            <label>Fecha as:</label>
+                                            <input type="time" name="sexsai" class="form-control" 
+                                                value="<?php echo $confs['SEXSAI'] ?>" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 pl-1">
+                                        <div class="form-group">
+                                            <label>Sábado:</label>
+                                            <input type="checkbox" name="sab" class="form-control" 
+                                                <?php echo $confs['SAB'] == 1?'checked':'' ?> />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pl-1">
+                                        <div class="form-group">
+                                            <label>Abre as:</label>
+                                            <input type="time" name="sabentra" class="form-control" 
+                                                value="<?php echo $confs['SABENTRA'] ?>" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pr-1">
+                                        <div class="form-group">
+                                            <label>Fecha as:</label>
+                                            <input type="time" name="sabsai" class="form-control" 
+                                                value="<?php echo $confs['SABSAI'] ?>" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 pl-1">
+                                        <div class="form-group">
+                                            <label>Domingo:</label>
+                                            <input type="checkbox" name="dom" class="form-control" 
+                                                <?php echo $confs['DOM'] == 1?'checked':'' ?> />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pl-1">
+                                        <div class="form-group">
+                                            <label>Abre as:</label>
+                                            <input type="time" name="domentra" class="form-control" 
+                                                value="<?php echo $confs['DOMENTRA'] ?>" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pr-1">
+                                        <div class="form-group">
+                                            <label>Fecha as:</label>
+                                            <input type="time" name="domfsai" class="form-control"
+                                                value="<?php echo $confs['DOMSAI'] ?>" />
+                                        </div>
+                                    </div>
+                                </div>
+                            <!-- <div class="row">
                 
                                 <div class="input-group-text col s3">
                                     <p><label><input name="horarios[]" <?php if (in_array(8, $horarios)) { echo "checked"; } ?>
@@ -79,7 +240,7 @@
                                                 type="checkbox" value="23" /><span>23:00</span> </label></p>
                                 </div>
                             </div>
-                            <?php } ?>
+                            <?php } ?> -->
                             <input type="hidden" name="id" value="<?php echo $id ?>">
 
 

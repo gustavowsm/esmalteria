@@ -16,7 +16,17 @@ class Confs extends model
 
         return $array;
     }
+    public function getHorariosAtendente($id)
+    {
+        $array = array();
+        $sql = "SELECT * FROM horarios WHERE idusuario = $id";
+        $sql = $this->db->query($sql);
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetch();
+        }
 
+        return $array;
+    }
     //Essa função é utilizada para mostrar os atendentes na agendamento/data
     public function getAtendentes()
     {
@@ -79,6 +89,38 @@ class Confs extends model
         } else {
             return false;
         }
+    }
+    public function getHorario($dia)
+    {
+        switch ($dia) {
+            case 1:
+                $sql = "SELECT SEGABRE,SEGFECHA FROM confs";
+                break;
+            case 2:
+                $sql = "SELECT TERABRE ,TERFECHA FROM confs";
+                break;
+            case 3:
+                $sql = "SELECT QUAABRE,QUAFECHA FROM confs";
+                break;
+            case 4:
+                $sql = "SELECT QUIABRE ,QUIFECHA FROM confs";
+                break;
+            case 5:
+                $sql = "SELECT SEXABRE ,SEXFECHA FROM confs";
+                break;
+            case 6:
+                $sql = "SELECT SABABRE,SABFECHA FROM confs";
+                break;
+            case 0:
+                $sql = "SELECT DOMABRE,DOMFECHA FROM confs";
+                break;
+        }
+        $sql = $this->db->query($sql);
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetch();
+        }
+
+        return $array;
     }
 
 }

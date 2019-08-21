@@ -14,7 +14,6 @@ class agendamentoController extends controller
             exit;
         }
     }
-
     public function index()
     {
         $data['tipo'] = $this->user->getTipo();
@@ -25,26 +24,24 @@ class agendamentoController extends controller
 
     public function data($dia)
     {
+        $c = new Confs();
+        $s = new Servicos();
         $timeZone = new DateTimeZone('UTC');
         $data1 = DateTime::createFromFormat('d', $dia, $timeZone);
         $data2 = DateTime::createFromFormat('d', date('d'), $timeZone);
-        /** Testa se sao validas */
         if (!($data1 instanceof DateTime)) {
             echo 'Data de entrada invalida!!';
         }
         if (!($data2 instanceof DateTime)) {
             echo 'Data de saida invalida!!';
         }
-        /** Compara as datas normalmente com operadores de comparacao < > = e != */
         if ($data1 > $data2 or $data1 == $data2) {
-            $c = new Confs();
-            $s = new Servicos();
             $data['tipo'] = $this->user->getTipo();
             $data['name'] = $this->user->getName();
             $hoje = getdate(strtotime('now'));
             $data['hoje'] = $hoje;
             $data['dia'] = $dia;
-            $data['confs'] = $c->getConfs();
+            $data['confs'] = $c->getHorario(date('w'));
             $data['atendentes'] = $c->getAtendentes();
             $datamarcada = date("Y-m-d", mktime(0, 0, 0, date('m'), $dia, date('Y')));
             $data['servicoshj'] = $s->getAtendimentosDeHoje($datamarcada);
@@ -65,11 +62,13 @@ class agendamentoController extends controller
         $hoje = getdate(strtotime('now'));
         $data['hoje'] = $hoje;
         $data['dia'] = $_GET['data'];
-        $data['confs'] = $c->getConfs();
+        $data['confs'] = $c->getHorario(date('w'));
+         $data['abre'] =substr($c->getHorario(date('w'))[0],0,-6);
+         $data['fecha'] =substr($c->getHorario(date('w'))[1],0,-6);
         $data['atendentes'] = $c->getAtendente($_GET['idatd']);
         $datamarcada = date("Y-m-d", mktime(0, 0, 0, date('m'), $_GET['data'], date('Y')));
         $data['servicoshj2'] = $s->getAtendimentosDeHoje2($datamarcada, $_GET['idatd']);
-        $this->loadTemplate('confere', $data);
+       $this->loadTemplate('confere', $data);
     }
 
     public function servicos()

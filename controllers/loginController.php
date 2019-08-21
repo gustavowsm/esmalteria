@@ -18,7 +18,7 @@ class loginController extends controller {
 	public function signin() {
 
 		if(!empty($_POST['username'])) {
-			$username = strtolower($_POST['username']);
+		 $username = strtolower($_POST['username']);
 			$pass = $_POST['pass'];
 			$users = new Users();
 			if($users->validateUser($username, $pass)) {
@@ -34,7 +34,7 @@ class loginController extends controller {
 				exit;
 			}
 		} else {
-			header("Location: ".BASE_URL.'login');
+			header("Location: ".BASE_URL.'login/');
 			exit;
 		}
 

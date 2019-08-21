@@ -1,58 +1,58 @@
 <div class="container">
-	<div class="row">
-	<table id="example" class="table table-striped table-bordered" style="width:100%">
-        <thead>
-        <tr>
-        <th>ID</th>
-        <th>Serviço</th>
-        <th>Valor</th>
-        <th>Disponibilidade</th>
-        <th>Descrição</th>
-        <th>Ações</th>
-        <th></th>
+    <div class="row">
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Serviço</th>
+                    <th>Valor</th>
+                    <th>Disponibilidade</th>
+                    <th>Descrição</th>
+                    <th>Ações</th>
+                    <th></th>
 
-    </tr>
-        </thead>
-        <tbody>
+                </tr>
+            </thead>
+            <tbody>
 
-        <?php foreach ($servicos as $svr): ?>
-        <tr>
-            <td><?php echo $svr['ID']; ?></td>
-            <td><?php echo utf8_encode($svr['NOME']); ?></td>
-            <td><?php echo $svr['VALOR']; ?>   </td>
-            <td style="color:black"><?php if ($svr['DISPONIBILIDADE'] == 1) {?>
-                    <label>
-                        <input type="checkbox" checked="checked" disabled="disabled" />
-                        <span style="color:black">Disponível</span>
-                    </label>
-                <?php } else {
-    ?>
-                    <p>
+                <?php foreach ($servicos as $svr): ?>
+                <tr>
+                    <td><?php echo $svr['ID']; ?></td>
+                    <td><?php echo $svr['NOME']; ?></td>
+                    <td><?php echo $svr['VALOR']; ?> </td>
+                    <td style="color:black"><?php if ($svr['DISPONIBILIDADE'] == 1) {?>
                         <label>
-                            <input type="checkbox" disabled="disabled" />
-                            <span style="color:black">Não disponível</span>
+                            <input type="checkbox" checked="checked" disabled="disabled" />
+                            <span style="color:black">Disponível</span>
                         </label>
-                    </p>
-                    <?php
+                        <?php } else {
+    ?>
+                        <p>
+                            <label>
+                                <input type="checkbox" disabled="disabled" />
+                                <span style="color:black">Não disponível</span>
+                            </label>
+                        </p>
+                        <?php
 }
 ?></td>
-            <td><?php echo utf8_encode($svr['DESCRICAO']); ?></td>
-            <td><a href="<?php echo BASE_URL ?>servicos/edit/<?php echo $svr['ID']; ?>"> editar</a></td>
-            <td><a href="<?php echo BASE_URL ?>servicos/delete/<?php echo $svr['ID']; ?>"> excluir</a></td>
-        </tr>
-    <?php endforeach;?>
-        </tbody>
-        <tfoot>
-            <tr>
-        <th>ID</th>
-        <th>Serviço</th>
-        <th>Valor</th>
-        <th>Disponibilidade</th>
-        <th>Descrição</th>
-        <th>Ações</th>
-        <th></th>
-        </tfoot>
-</tr>
-    </table>
-	</div>
+                    <td><?php echo $svr['DESCRICAO']; ?></td>
+                    <td><a href="<?php echo BASE_URL ?>servicos/edit/<?php echo $svr['ID']; ?>"> editar</a></td>
+                    <td><a href="<?php echo BASE_URL ?>servicos/delete/<?php echo $svr['ID']; ?>"> excluir</a></td>
+                </tr>
+                <?php endforeach;?>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>ID</th>
+                    <th>Serviço</th>
+                    <th>Valor</th>
+                    <th>Disponibilidade</th>
+                    <th>Descrição</th>
+                    <th>Ações</th>
+                    <th></th>
+            </tfoot>
+            </tr>
+        </table>
+    </div>
 </div>

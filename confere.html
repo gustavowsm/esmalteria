@@ -33,11 +33,12 @@
 
     <h2>Cheque a disponibilidade dos nossos atendentes:</h2>
     <?php
-echo $abre;
-echo $fecha;
-  /*  $fimDoArray = explode(",", $atendentes['DISPONIBILIDADE']);
+   echo $abre = $confs[0];
+    echo $fecha = $confs[1];
+
+    $fimDoArray = explode(",", $atendentes['DISPONIBILIDADE']);
     $inicioDoExpediente = explode(",", $atendentes['DISPONIBILIDADE'])[0];
-    $fimDoExpediente = end($fimDoArray);*/
+    $fimDoExpediente = end($fimDoArray);
     if (!empty($servicoshj2)) {
         foreach (range($hora5[0], $fimDoExpediente) as $number) {
             $fatidicoArray[] = $number;
@@ -59,7 +60,7 @@ echo $fecha;
         <?php
         //pego o array do horario de funcionamento do estabelecimento itero ele para dar as horas que o estabelecimento vai 
         //abrir todo dia
-        for ($i = $abre; $i <= $fecha; ++$i) {
+        for ($i = $inicioDoExpediente; $i <= $fimDoExpediente; ++$i) {
             ?>
         <tr>
             <td>
@@ -67,8 +68,16 @@ echo $fecha;
             </td>
             <td>
                 <?php
-          echo "<a href='" . BASE_URL . "agendamento/servicos?data=" . $dia . "&horario=" . $i . "&idatd=" . $atendentes['id'] . "'>Livre</a>";
-               ?>
+                    if (!empty($servicoshj2)) {
+                        if (!in_array($i, $hora5)) {
+                            echo "<a href='" . BASE_URL . "agendamento/servicos?data=" . $dia . "&horario=" . $i . "&idatd=" . $atendentes['id'] . "'>Livre</a>";
+                        } else {
+                            echo "Em serviço";
+                        }
+                    } else {
+                        echo "<a href='" . BASE_URL . "agendamento/servicos?data=" . $dia . "&horario=" . $i . "&idatd=" . $atendentes['id'] . "'>Livre</a>";
+                    }
+                    ?>
             </td>
         </tr>
         <?php
