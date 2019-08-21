@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 15-Ago-2019 às 18:18
+-- Generation Time: 21-Ago-2019 às 23:22
 -- Versão do servidor: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -106,7 +106,46 @@ CREATE TABLE `confs` (
 --
 
 INSERT INTO `confs` (`id`, `ABRE`, `FECHA`, `SEG`, `SEGABRE`, `SEGFECHA`, `TER`, `TERABRE`, `TERFECHA`, `QUA`, `QUAABRE`, `QUAFECHA`, `QUI`, `QUIABRE`, `QUIFECHA`, `SEX`, `SEXABRE`, `SEXFECHA`, `SAB`, `SABABRE`, `SABFECHA`, `DOM`, `DOMABRE`, `DOMFECHA`) VALUES
-(1, '08:00:00', '18:00:00', 1, '08:00:00', '14:00:00', 1, '07:00:00', '13:00:00', 1, '06:00:00', '12:00:00', 1, '07:00:00', '13:00:00', 1, '05:00:00', '18:00:00', 1, '07:00:00', '13:00:00', 1, '08:00:00', '12:00:00');
+(1, '08:00:00', '18:00:00', 1, '11:00:00', '18:00:00', 1, '10:00:00', '18:00:00', 1, '12:00:00', '18:00:00', 1, '08:00:00', '18:00:00', 1, '08:00:00', '18:00:00', 1, '08:00:00', '18:00:00', 1, '08:00:00', '12:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `horarios`
+--
+
+CREATE TABLE `horarios` (
+  `id` int(11) NOT NULL,
+  `idusuario` int(11) NOT NULL,
+  `SEG` int(11) NOT NULL,
+  `SEGENTRA` time NOT NULL,
+  `SEGSAI` time NOT NULL,
+  `TER` int(11) NOT NULL,
+  `TERENTRA` time NOT NULL,
+  `TERSAI` time NOT NULL,
+  `QUA` int(11) NOT NULL,
+  `QUAENTRA` time NOT NULL,
+  `QUASAI` time NOT NULL,
+  `QUI` int(11) NOT NULL,
+  `QUIENTRA` time NOT NULL,
+  `QUISAI` time NOT NULL,
+  `SEX` int(11) NOT NULL,
+  `SEXENTRA` time NOT NULL,
+  `SEXSAI` time NOT NULL,
+  `SAB` int(11) NOT NULL,
+  `SABENTRA` time NOT NULL,
+  `SABSAI` time NOT NULL,
+  `DOM` int(11) NOT NULL,
+  `DOMENTRA` time NOT NULL,
+  `DOMSAI` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `horarios`
+--
+
+INSERT INTO `horarios` (`id`, `idusuario`, `SEG`, `SEGENTRA`, `SEGSAI`, `TER`, `TERENTRA`, `TERSAI`, `QUA`, `QUAENTRA`, `QUASAI`, `QUI`, `QUIENTRA`, `QUISAI`, `SEX`, `SEXENTRA`, `SEXSAI`, `SAB`, `SABENTRA`, `SABSAI`, `DOM`, `DOMENTRA`, `DOMSAI`) VALUES
+(1, 1, 1, '08:00:00', '08:00:00', 1, '08:00:00', '09:00:00', 1, '08:00:00', '12:00:00', 1, '12:00:00', '18:00:00', 1, '12:00:00', '18:00:00', 1, '10:00:00', '15:00:00', 1, '10:00:00', '15:00:00');
 
 -- --------------------------------------------------------
 
@@ -159,7 +198,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `pass`, `loginhash`, `telefone`, `DATACRI`, `DATAMOD`, `CLIENTE`, `ATENDENTE`, `EMAIL`, `DISPONIBILIDADE`, `TIPO`, `ativo`) VALUES
-(1, 'admin', '$2y$10$DeO2B4TBzs2COFvNBjAFYefZDOycO688/ngNsUuo0alzG3YvYTBXi', '1c44286495346fec76b2d734d16e95fa', 12345, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 1, 'admin@admin', '8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23', 1, 1),
+(1, 'admin', '$2y$10$DeO2B4TBzs2COFvNBjAFYefZDOycO688/ngNsUuo0alzG3YvYTBXi', '5631ed540c3082a91e3ea81ecf9d4dc3', 12345, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 1, 'admin@admin', '8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23', 1, 1),
 (2, 'fulana fulana', '$2y$10$DeO2B4TBzs2COFvNBjAFYefZDOycO688/ngNsUuo0alzG3YvYTBXi', '1953f63755350360b67240c5a45170d6', 13215645, '2019-06-05 14:30:31', '0000-00-00 00:00:00', 1, 0, 'fulana@fulana', '', 0, 1),
 (10, 'sicrana', '$2y$10$DeO2B4TBzs2COFvNBjAFYefZDOycO688/ngNsUuo0alzG3YvYTBXi', NULL, 955321, '2019-06-05 14:23:51', '0000-00-00 00:00:00', 0, 1, 'sicrana@sicrana', '9,10,11,12,13,14,15,16,17,18', 0, 1),
 (11, 'beltrana', '$2y$10$DeO2B4TBzs2COFvNBjAFYefZDOycO688/ngNsUuo0alzG3YvYTBXi', NULL, 325165145, '2019-06-13 12:46:21', '0000-00-00 00:00:00', 0, 1, 'beltrana@beltrana', '8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23', 1, 1);
@@ -178,6 +217,12 @@ ALTER TABLE `atendimentos`
 -- Indexes for table `confs`
 --
 ALTER TABLE `confs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `horarios`
+--
+ALTER TABLE `horarios`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -206,6 +251,12 @@ ALTER TABLE `atendimentos`
 -- AUTO_INCREMENT for table `confs`
 --
 ALTER TABLE `confs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `horarios`
+--
+ALTER TABLE `horarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
